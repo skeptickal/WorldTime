@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 class ChooseLocation extends StatefulWidget {
   const ChooseLocation({super.key});
@@ -8,8 +9,19 @@ class ChooseLocation extends StatefulWidget {
 }
 
 class _ChooseLocationState extends State<ChooseLocation> {
+  int counter = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    final logger = Logger();
+    logger.i('initState function ran');
+  }
+
   @override
   Widget build(BuildContext context) {
+    final logger = Logger();
+    logger.i('build function ran');
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
@@ -18,7 +30,14 @@ class _ChooseLocationState extends State<ChooseLocation> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: const Text('choose location screen'),
+      body: ElevatedButton(
+        onPressed: () {
+          setState(() {
+            counter += 1;
+          });
+        },
+        child: Text('counter is $counter'),
+      ),
     );
   }
 }
