@@ -38,6 +38,7 @@ class _HomeState extends State<Home> {
                 onPressed: () async {
                   dynamic result =
                       await Navigator.pushNamed(context, '/location');
+                  if (result != null) {
                   setState(() {
                     data = {
                       'time': result['time'],
@@ -45,7 +46,7 @@ class _HomeState extends State<Home> {
                       'isDaytime': result['isDaytime'],
                       'flag': result['flag'],
                     };
-                  });
+                  });}
                 },
                 icon: const Icon(Icons.edit_location, color: Colors.white),
                 label: const Text('edit location',
